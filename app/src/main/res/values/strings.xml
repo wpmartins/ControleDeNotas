@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Controle de Notas Mobile</string>
+    <string name="action_settings">Opções</string>
+
+    <string name="lbPeriodo">Período</string>
+    <string name="lbDisciplinas">Selecione a Disciplina</string>
+    <string name="lbAv1b1">AV1 - 1º BIM</string>
+    <string name="lbAv1b2">AV1 - 2º BIM</string>
+    <string name="lbAv2">AV2 - Colegiada</string>
+    <string name="lbAv3">AV3 - Proj. Integrador</string>
+    <string name="lbParcial">Parcial</string>
+
+    <string name="btGravar">Gravar</string>
+    <string name="btCalcular">Calcular</string>
+
+    <string name="title_activity_list">Consulta</string>
+</resources>
