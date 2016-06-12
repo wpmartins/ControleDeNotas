@@ -58,28 +58,32 @@ public class CriarBanco extends SQLiteOpenHelper {
         db.execSQL(insert);
 
         String insert1 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
-                "VALUES ('Algoritmos',1,'N')";
+                "VALUES ('---------------',1,'N')";
         db.execSQL(insert1);
 
         String insert2 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
-                "VALUES ('Formação Geral',1,'N')";
+                "VALUES ('Algoritmos',1,'N')";
         db.execSQL(insert2);
 
         String insert3 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
-                "VALUES ('Projeto Integrador',1,'S')";
+                "VALUES ('Formação Geral',1,'N')";
         db.execSQL(insert3);
 
         String insert4 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
-                "VALUES ('Modelagem de Dados',2,'N')";
+                "VALUES ('Projeto Integrador',1,'S')";
         db.execSQL(insert4);
 
         String insert5 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
-                "VALUES ('Programação Estruturada',2,'N')";
+                "VALUES ('Modelagem de Dados',2,'N')";
         db.execSQL(insert5);
 
         String insert6 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
-                "VALUES ('Projeto Integrador II',2,'S')";
+                "VALUES ('Programação Estruturada',2,'N')";
         db.execSQL(insert6);
+
+        String insert7 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Projeto Integrador II',2,'S')";
+        db.execSQL(insert7);
     }
 
     @Override

@@ -14,6 +14,11 @@ public class Notas implements Serializable {
     public double AV1B2;
     public double AV2;
     public double AV3;
+    public double AV1B1P;
+    public double AV1B2P;
+    public double AV2P;
+    public double AV3P;
+    public double MEDIA;
 
     public int getID_DISCIPLINA() {
         return ID_DISCIPLINA;
@@ -53,6 +58,46 @@ public class Notas implements Serializable {
 
     public void setAV3(double AV3) {
         this.AV3 = AV3;
+    }
+
+    public double getAV1B1P() {
+        return AV1B1P;
+    }
+
+    public void setAV1B1P(double AV1B1P) {
+        this.AV1B1P = AV1B1P;
+    }
+
+    public double getAV1B2P() {
+        return AV1B2P;
+    }
+
+    public void setAV1B2P(double AV1B2P) {
+        this.AV1B2P = AV1B2P;
+    }
+
+    public double getAV2P() {
+        return AV2P;
+    }
+
+    public void setAV2P(double AV2P) {
+        this.AV2P = AV2P;
+    }
+
+    public double getAV3P() {
+        return AV3P;
+    }
+
+    public void setAV3P(double AV3P) {
+        this.AV3P = AV3P;
+    }
+
+    public double getMEDIA() {
+        return MEDIA;
+    }
+
+    public void setMEDIA(double MEDIA) {
+        this.MEDIA = MEDIA;
     }
 }
 

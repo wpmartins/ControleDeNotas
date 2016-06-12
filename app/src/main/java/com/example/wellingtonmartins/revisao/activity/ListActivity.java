@@ -15,6 +15,7 @@ import org.androidannotations.annotations.ViewById;
 @EActivity(R.layout.activity_list)
 public class ListActivity extends AppCompatActivity {
 
+
    // @ViewById
    // ListView lvEstado;
    //

@@ -9,6 +9,7 @@
     <string name="lbAv2">AV2 - Colegiada</string>
     <string name="lbAv3">AV3 - Proj. Integrador</string>
     <string name="lbParcial">Parcial</string>
+    <string name="lbTotal">Média Final</string>
 
     <string name="btGravar">Gravar</string>
     <string name="btCalcular">Calcular</string>

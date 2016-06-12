@@ -42,4 +42,17 @@ public class DisciplinasDAO {
 
         return listaDisciplinas;
     }
+
+    public String retornaTipo(int id){
+        db = banco.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT IN_TIPO FROM "+TB_NOME+" " +
+                "WHERE ID_DISCIPLINA ="+id, null);
+
+        String retorno ="";
+        while (cursor.moveToNext()){
+            retorno = cursor.getString(0);
+        }
+        db.close();
+        return retorno;
+    }
 }
