@@ -2,6 +2,7 @@ package com.example.wellingtonmartins.revisao.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,10 +20,13 @@ import com.example.wellingtonmartins.revisao.modelo.Notas;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 
 @OptionsMenu(R.menu.menu_main)
@@ -79,24 +83,26 @@ public class CadNotasActivity extends AppCompatActivity {
         periodosDAO = new PeriodosDAO(this);
         notasDao = new NotasDAO(this);
 
+        setAdapterNotas();
+    }
+
+    private void setAdapterNotas() {
         List<Disciplinas> listarDisciplinas = disciplinasDAO.listar();
 
         ArrayAdapter<Disciplinas> arrayDisciplinas =
                 new ArrayAdapter<Disciplinas>(this, android.R.layout.simple_spinner_dropdown_item, listarDisciplinas);
         spDisciplinas.setAdapter(arrayDisciplinas);
-
         spDisciplinas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position != 0){
-                    posicao = position+1;
+                if (position != 0) {
+                    posicao = position + 1;
                     String periodo = periodosDAO.retornaDescricao(posicao);
                     edtPeriodo.setText(periodo);
                     String tipoMateria = disciplinasDAO.retornaTipo(posicao);
                     campos(tipoMateria);
-                }
 
-                //Toast.makeText(getApplicationContext(), "id selecionado :" + posicao, Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -104,12 +110,9 @@ public class CadNotasActivity extends AppCompatActivity {
 
             }
         });
-
-        Toast.makeText(getApplicationContext(), "id selecionado :" + posicao, Toast.LENGTH_SHORT).show();
     }
 
     private void campos(String tipoMateria) {
-
         if(tipoMateria.toString().equals("S")){
             edtAv3.setEnabled(true);
             edtAv1b1.setEnabled(false);
@@ -154,24 +157,8 @@ public class CadNotasActivity extends AppCompatActivity {
         return notas;
     }
 
-    @Click(R.id.btnGravar)
-    public void btnGravar(){
-        Notas obj = new Notas();
-        String retorno = notasDao.inserir(getCampos(obj));
-        Toast.makeText(this, retorno, Toast.LENGTH_LONG).show();
-        limpar();
-        //if (e.getCod() == 0){
-        //    notasDao.inserir(e);
-        //} else {
-        //    notasDao.update(e);
-        //}
-    }
-
-    @Click(R.id.btnCalcular)
-    public void btnCalcular(){
+    private Notas calcular(Notas obj) {
         double media;
-        Notas obj = new Notas();
-        getCampos(obj);
         obj.setAV1B1P(obj.getAV1B1() * 0.25);
         media = (obj.getAV1B1() * 0.25);
         obj.setAV1B2P(obj.getAV1B2() * 0.25);
@@ -181,94 +168,78 @@ public class CadNotasActivity extends AppCompatActivity {
         obj.setAV3P(obj.getAV3() * 0.2);
         media = media +(obj.getAV3() * 0.2);
         obj.setMEDIA(media);
-        setCampos(obj);
-
+        return obj;
     }
 
     private void setCampos(Notas obj) {
-        edtAv1b1P.setText(String.valueOf(obj.getAV1B1P()));
-        edtAv1b2P.setText(String.valueOf(obj.getAV1B2P()));
-        edtAv2P.setText(String.valueOf(obj.getAV2P()));
-        edtAv3P.setText(String.valueOf(obj.getAV3P()));
-        edtMediaFinal.setText(String.valueOf(obj.getMEDIA()));
+        spDisciplinas.setSelection(obj.getID_DISCIPLINA() - 1);
+
+        edtAv1b1.setText(String.valueOf(obj.getAV1B1()));
+        edtAv1b2.setText(String.valueOf(obj.getAV1B2()));
+        edtAv2.setText(String.valueOf(obj.getAV2()));
+        edtAv3.setText(String.valueOf(obj.getAV3()));
+
+        NumberFormat campoFomatado = new DecimalFormat("#.#");
+        edtAv1b1P.setText(String.valueOf(campoFomatado.format(obj.getAV1B1P())));
+        edtAv1b2P.setText(String.valueOf(campoFomatado.format(obj.getAV1B2P())));
+        edtAv2P.setText(String.valueOf(campoFomatado.format(obj.getAV2P())));
+        edtAv3P.setText(String.valueOf(campoFomatado.format(obj.getAV3P())));
+        edtMediaFinal.setText(String.valueOf(campoFomatado.format(obj.getMEDIA())));
     }
 
-    private void limpar() {
+    private void limparCampos() {
         edtAv1b1.setText("");
         edtAv1b2.setText("");
         edtAv2.setText("");
         edtAv3.setText("");
-        edtPeriodo.setText("");
         edtMediaFinal.setText("");
-        spDisciplinas.setSelection(0);
         edtAv1b1P.setText("");
         edtAv1b2P.setText("");
         edtAv2P.setText("");
         edtAv3P.setText("");
+    }
 
+    private void limparSpinner(){
+        spDisciplinas.setSelection(0);
+        edtPeriodo.setText("");
+    }
+
+
+    @Click(R.id.btnGravar)
+    public void btnGravar(){
+        Notas obj = new Notas();
+        String retorno = notasDao.inserir(getCampos(obj));
+        Toast.makeText(this, retorno, Toast.LENGTH_LONG).show();
+        limparCampos();
+        limparSpinner();
 
     }
 
+    @Click(R.id.btnCalcular)
+    public void btnCalcular(){
+        double media;
+        Notas obj = new Notas();
+        setCampos(calcular(getCampos(obj)));
+
+    }
+    @Click(R.id.btnLimpar)
+    public void btnLimpar(){
+        limparCampos();
+    }
 
     @OptionsItem(R.id.mnListar)
     public void listar(){
         startActivityForResult(new Intent(this, ListActivity_.class), LIST_REQUEST);
     }
 
-    //public void init(){
-    //    notasDao = new DisciplinasDAO(this);
-    //}
-    //
-    //public Notas getEstado(){
-    //    Notas notas = new Notas();
-    //    notas.setNome(edtNome.getText().toString());
-    //    try {
-    //        notas.setCod(Integer.parseInt(edtId.getText().toString()));
-    //    } catch (NumberFormatException e){
-    //
-    //    }
-    //    return notas;
-    //}
-    //
-    //public void setEstado(Notas notas){
-    //    edtId.setText(String.valueOf(notas.getCod()));
-    //    edtNome.setText(notas.getNome());
-    //
-    //}
-    //public void limpar(){
-    //    edtId.setText("");
-    //    edtNome.setText("");
-    //}
-    //
-    //
-    //@OptionsItem(R.id.mnSalvar)
-    //public void salvar(){
-    //    Notas e = new Notas();
-    //    if (e.getCod() == 0){
-    //        notasDao.inserir(e);
-    //    } else {
-    //        notasDao.update(e);
-    //    }
-    //
-    //    limpar();
-    //
-    //}
-    //@OptionsItem(R.id.mnListar)
-    //public void listar(){
-    //    startActivityForResult(new Intent(this, ListActivity_.class), LIST_REQUEST);
-    //}
-    //
-    //@OptionsItem(R.id.mnDel)
-    //public void delete(){
-    //    Notas e = new Notas();
-    //    notasDao.delete(e);
-    //    limpar();
-    //}
-    //
-    //@OnActivityResult(LIST_REQUEST)
-    //public void listResult ( int resultCode, Intent data, @OnActivityResult.Extra String value){
-    //    Notas e = (Notas) data.getExtras().getSerializable("estado");
-    //    setEstado(e);
-    //}
-    //
+    @OnActivityResult(LIST_REQUEST)
+    public void listResult (int resultCode, Intent data, @OnActivityResult.Extra String value) {
+        try {
+            Notas obj = (Notas) data.getExtras().getSerializable("notas");
+            setCampos(obj);
+
+        } catch (NullPointerException ex) {
+            Log.e("MSG", "Não voltou estado.");
+        }
+    }
 }

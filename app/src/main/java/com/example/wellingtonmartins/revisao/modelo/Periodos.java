@@ -27,6 +27,6 @@ public class Periodos implements Serializable {
 
     @Override
     public String toString() {
-        return "{"+getID_PERIODO()+"} " +getDS_PERIODO();
+        return getDS_PERIODO();
     }
 }

@@ -3,6 +3,7 @@ package com.example.wellingtonmartins.revisao.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.wellingtonmartins.revisao.banco.CriarBanco;
@@ -34,7 +35,15 @@ public class NotasDAO {
         valores.put("AV2", notas.getAV2());
         valores.put("AV3", notas.getAV3());
 
-        db.insert(TB_NOME, null, valores);
+        try {
+            long retorno = db.insert(TB_NOME, null, valores);
+            if (retorno == -1){
+                update(notas);
+            }
+        } catch (Exception e){
+
+        }
+
         db.close();
 
         return "Registro Salvo !";
@@ -42,7 +51,6 @@ public class NotasDAO {
 
     public void update(Notas notas){
         ContentValues cv = new ContentValues();
-        cv.put("ID_DISCIPLINA", notas.getID_DISCIPLINA());
         cv.put("AV1B1", notas.getAV1B1());
         cv.put("AV1B2", notas.getAV1B2());
         cv.put("AV2", notas.getAV2());

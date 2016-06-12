@@ -13,6 +13,7 @@
 
     <string name="btGravar">Gravar</string>
     <string name="btCalcular">Calcular</string>
+    <string name="btLimpar">Limpar</string>
 
     <string name="title_activity_list">Consulta</string>
 </resources>

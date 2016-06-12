@@ -1,7 +1,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".activity.CadNotasActivity">
     <item android:id="@+id/mnListar" android:title="Listar">Listar</item>
-
 </menu>

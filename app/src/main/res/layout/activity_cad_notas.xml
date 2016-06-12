@@ -148,6 +148,7 @@
                         android:layout_height="wrap_content"
                         android:minWidth="140dp"
                         android:hint="0"
+                        android:inputType="numberDecimal"
                         android:background="@color/branco"
                         android:id="@+id/edtAv1b1P"
                         android:layout_gravity="center_horizontal"
@@ -250,6 +251,13 @@
                     android:layout_height="wrap_content"
                     android:text="@string/btCalcular"
                     android:id="@+id/btnCalcular"
+                    android:layout_weight=".5"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btLimpar"
+                    android:id="@+id/btnLimpar"
                     android:layout_weight=".5"/>
             </LinearLayout>
         </LinearLayout>
