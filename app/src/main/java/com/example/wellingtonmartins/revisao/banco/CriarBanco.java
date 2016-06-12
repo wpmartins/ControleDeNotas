@@ -29,7 +29,7 @@ public class CriarBanco extends SQLiteOpenHelper {
         db.execSQL(SQL_DISCIPLINAS);
 
         String SQL_NOTAS = "CREATE TABLE NOTAS ("+
-                "ID_DISCIPLINA INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "ID_DISCIPLINA INTEGER PRIMARY KEY, " +
                 "AV1B1 NUMERIC, " +
                 "AV1B2 NUMERIC, " +
                 "AV2 NUMERIC, " +
@@ -38,6 +38,9 @@ public class CriarBanco extends SQLiteOpenHelper {
         db.execSQL(SQL_NOTAS);
 
         String insert;
+
+        insert = "INSERT INTO PERIODOS (DS_PERIODO) VALUES ('------------------')";
+        db.execSQL(insert);
 
         insert = "INSERT INTO PERIODOS (DS_PERIODO) VALUES ('1º Período')";
         db.execSQL(insert);
@@ -58,31 +61,31 @@ public class CriarBanco extends SQLiteOpenHelper {
         db.execSQL(insert);
 
         String insert1 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
-                "VALUES ('---------------',1,'N')";
+                "VALUES ('------------------',1,'N')";
         db.execSQL(insert1);
 
         String insert2 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
-                "VALUES ('Algoritmos',1,'N')";
+                "VALUES ('Algoritmos',2,'N')";
         db.execSQL(insert2);
 
         String insert3 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
-                "VALUES ('Formação Geral',1,'N')";
+                "VALUES ('Formação Geral',2,'N')";
         db.execSQL(insert3);
 
         String insert4 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
-                "VALUES ('Projeto Integrador',1,'S')";
+                "VALUES ('Projeto Integrador',2,'S')";
         db.execSQL(insert4);
 
         String insert5 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
-                "VALUES ('Modelagem de Dados',2,'N')";
+                "VALUES ('Modelagem de Dados',3,'N')";
         db.execSQL(insert5);
 
         String insert6 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
-                "VALUES ('Programação Estruturada',2,'N')";
+                "VALUES ('Programação Estruturada',3,'N')";
         db.execSQL(insert6);
 
         String insert7 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
-                "VALUES ('Projeto Integrador II',2,'S')";
+                "VALUES ('Projeto Integrador II',3,'S')";
         db.execSQL(insert7);
     }
 

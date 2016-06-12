@@ -19,6 +19,7 @@ public class Notas implements Serializable {
     public double AV2P;
     public double AV3P;
     public double MEDIA;
+    public String DS_DISCIPLINA;
 
     public int getID_DISCIPLINA() {
         return ID_DISCIPLINA;
@@ -98,6 +99,31 @@ public class Notas implements Serializable {
 
     public void setMEDIA(double MEDIA) {
         this.MEDIA = MEDIA;
+    }
+
+    public String getDS_DISCIPLINA() {
+        return DS_DISCIPLINA;
+    }
+
+    public void setDS_DISCIPLINA(String DS_DISCIPLINA) {
+        this.DS_DISCIPLINA = DS_DISCIPLINA;
+    }
+
+    @Override
+    public String toString() {
+        double av11 = getAV1B1() * 0.25;
+        double av12 = getAV1B2() * 0.25;
+        double av2 = getAV2() * 0.3;
+        double av3 = getAV3() * 0.2;
+        return "Disciplina: "+getDS_DISCIPLINA()
+                +"\n"
+                +"\nAV1/1ºBimestre:  "+getAV1B1()
+                +"\nAV1/2ºBimestre:  "+getAV1B2()
+                +"\nAV2:                      "+getAV2()
+                +"\nAV3:                      "+getAV3()
+                +"\nMédia Final:          "+(av11+av12+av2+av3)
+                +"\n";
+
     }
 }
 

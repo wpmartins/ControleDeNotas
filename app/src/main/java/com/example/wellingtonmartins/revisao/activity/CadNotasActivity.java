@@ -1,6 +1,5 @@
 package com.example.wellingtonmartins.revisao.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -16,7 +15,6 @@ import com.example.wellingtonmartins.revisao.dao.NotasDAO;
 import com.example.wellingtonmartins.revisao.dao.PeriodosDAO;
 import com.example.wellingtonmartins.revisao.modelo.Disciplinas;
 import com.example.wellingtonmartins.revisao.modelo.Notas;
-import com.example.wellingtonmartins.revisao.modelo.Periodos;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -25,7 +23,6 @@ import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @OptionsMenu(R.menu.menu_main)
@@ -160,10 +157,11 @@ public class CadNotasActivity extends AppCompatActivity {
     @Click(R.id.btnGravar)
     public void btnGravar(){
         Notas obj = new Notas();
-        notasDao.add(getCampos(obj));
+        String retorno = notasDao.inserir(getCampos(obj));
+        Toast.makeText(this, retorno, Toast.LENGTH_LONG).show();
         limpar();
         //if (e.getCod() == 0){
-        //    notasDao.add(e);
+        //    notasDao.inserir(e);
         //} else {
         //    notasDao.update(e);
         //}
@@ -203,6 +201,10 @@ public class CadNotasActivity extends AppCompatActivity {
         edtPeriodo.setText("");
         edtMediaFinal.setText("");
         spDisciplinas.setSelection(0);
+        edtAv1b1P.setText("");
+        edtAv1b2P.setText("");
+        edtAv2P.setText("");
+        edtAv3P.setText("");
 
 
     }
@@ -243,7 +245,7 @@ public class CadNotasActivity extends AppCompatActivity {
     //public void salvar(){
     //    Notas e = new Notas();
     //    if (e.getCod() == 0){
-    //        notasDao.add(e);
+    //        notasDao.inserir(e);
     //    } else {
     //        notasDao.update(e);
     //    }

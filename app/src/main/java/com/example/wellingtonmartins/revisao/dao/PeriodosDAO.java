@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.wellingtonmartins.revisao.banco.CriarBanco;
 import com.example.wellingtonmartins.revisao.modelo.Periodos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Wellington Martins on 10/06/2016.
  */
@@ -30,5 +33,25 @@ public class PeriodosDAO {
         }
         db.close();
         return retorno;
+    }
+
+    public List<Periodos> listar(){
+        Cursor cursor;
+        String [] campos = {"ID_PERIODO","DS_PERIODO"};
+
+        db = banco.getReadableDatabase();
+        cursor = db.query(TB_NOME, campos, null, null, null, null, null);
+
+        List<Periodos> listaPeriodos = new ArrayList<>();
+
+        while (cursor.moveToNext()){
+            Periodos obj = new Periodos();
+            obj.setID_PERIODO(cursor.getInt(0));
+            obj.setDS_PERIODO(cursor.getString(1));
+            listaPeriodos.add(obj);
+        }
+        cursor.close();
+
+        return listaPeriodos;
     }
 }

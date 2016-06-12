@@ -24,17 +24,17 @@ public class NotasDAO {
         banco = new CriarBanco(baseContext);
     }
 
-    public String add(Notas notas){
-        ContentValues cv;
+    public String inserir(Notas notas){
+        ContentValues valores;
         db = banco.getWritableDatabase();
-        cv = new ContentValues();
+        valores = new ContentValues();
+        valores.put("ID_DISCIPLINA", notas.getID_DISCIPLINA());
+        valores.put("AV1B1", notas.getAV1B1());
+        valores.put("AV1B2", notas.getAV1B2());
+        valores.put("AV2", notas.getAV2());
+        valores.put("AV3", notas.getAV3());
 
-        cv.put("AV1B1", notas.getAV1B1());
-        cv.put("AV1B2", notas.getAV1B2());
-        cv.put("AV2", notas.getAV2());
-        cv.put("AV3", notas.getAV3());
-
-        db.insert(TB_NOME, null, cv);
+        db.insert(TB_NOME, null, valores);
         db.close();
 
         return "Registro Salvo !";
@@ -55,21 +55,31 @@ public class NotasDAO {
         db.delete(TB_NOME, "ID_DISCIPLINA = ?", new String[]{String.valueOf(notas.getID_DISCIPLINA())});
     };
 
-    public List<Notas> list(){
-        List<Notas> notas = new ArrayList<>();
-        Cursor c = db.rawQuery("SELECT * FROM NOTAS", null);
+    public List<Notas> list(int id){
+        Cursor cursor;
 
-        while (c.moveToNext()){
-            Notas n = new Notas();
-            n.setID_DISCIPLINA(c.getInt(c.getColumnIndex("ID_DISCIPLINA")));
-            n.setAV1B1(c.getDouble(c.getColumnIndex("AV1B1")));
-            n.setAV1B2(c.getDouble(c.getColumnIndex("AV1B2")));
-            n.setAV2(c.getDouble(c.getColumnIndex("AV2")));
-            n.setAV3(c.getDouble(c.getColumnIndex("AV3")));
+        String[] campos = {"NOTAS.ID_DISCIPLINA","DS_DISCIPLINA","AV1B1","AV1B2","AV2","AV3"};
 
-            notas.add(n);
+        db = banco.getReadableDatabase();
+        cursor = db.query(TB_NOME+" INNER JOIN DISCIPLINAS ON DISCIPLINAS.ID_DISCIPLINA = NOTAS.ID_DISCIPLINA " +
+                "INNER JOIN PERIODOS ON PERIODOS.ID_PERIODO = DISCIPLINAS.ID_PERIODO", campos, "" +
+                "DISCIPLINAS.ID_PERIODO = "+id, null,null, null, null);
+
+        List<Notas> listaNotas = new ArrayList<>();
+        while (cursor.moveToNext()){
+            Notas obj = new Notas();
+            obj.setID_DISCIPLINA(cursor.getInt(0));
+            obj.setDS_DISCIPLINA(cursor.getString(1));
+            obj.setAV1B1(cursor.getDouble(2));
+            obj.setAV1B2(cursor.getDouble(3));
+            obj.setAV2(cursor.getDouble(4));
+            obj.setAV3(cursor.getDouble(5));
+
+            listaNotas.add(obj);
         }
-        c.close();
-        return  notas;
+        cursor.close();
+        return  listaNotas;
+
+
     };
 }

@@ -24,4 +24,9 @@ public class Periodos implements Serializable {
     public void setDS_PERIODO(String DS_PERIODO) {
         this.DS_PERIODO = DS_PERIODO;
     }
+
+    @Override
+    public String toString() {
+        return "{"+getID_PERIODO()+"} " +getDS_PERIODO();
+    }
 }

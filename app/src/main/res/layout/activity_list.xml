@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:padding="16dp"
     android:background="@color/azul"
     tools:context=".activity.ListActivity"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selecione o Periodo:"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spPeriodo"
+        android:background="@color/azulClaro"
+        android:layout_marginTop="4dp"
+        android:minHeight="30dp">
+    </Spinner>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
         android:id="@+id/lvNotas"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="@color/azulClaro">
     </ListView>
 </LinearLayout>
