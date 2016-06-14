@@ -64,29 +64,106 @@ public class CriarBanco extends SQLiteOpenHelper {
                 "VALUES ('------------------',1,'N')";
         db.execSQL(insert1);
 
-        String insert2 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+        String insert2;
+
+        insert2 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
                 "VALUES ('Algoritmos',2,'N')";
         db.execSQL(insert2);
-
-        String insert3 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+        insert2 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
                 "VALUES ('Formação Geral',2,'N')";
+        db.execSQL(insert2);
+        insert2 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Arquitetura de Computadores',2,'N')";
+        db.execSQL(insert2);
+        insert2 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Matemática Aplicada à Computação',2,'N')";
+        db.execSQL(insert2);
+        insert2 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Projeto Integrador',2,'S')";
+        db.execSQL(insert2);
+
+        String insert3;
+        insert3 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Engenharia de Software',3,'N')";
+        db.execSQL(insert3);
+        insert3 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Fundamentos de Redes de Computadores',3,'N')";
+        db.execSQL(insert3);
+        insert3 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Leitura e Interpretação de Textos',3,'N')";
+        db.execSQL(insert3);
+        insert3 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Modelagem de Dados',3,'N')";
+        db.execSQL(insert3);
+        insert3 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Programação Estruturada',3,'N')";
+        db.execSQL(insert3);
+        insert3 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Projeto Integrador II',3,'S')";
         db.execSQL(insert3);
 
-        String insert4 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
-                "VALUES ('Projeto Integrador',2,'S')";
+        String insert4;
+        insert4 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Análise de Sistemas Orientada a Objetos',4,'N')";
+        db.execSQL(insert4);
+        insert4 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Banco de Dados',4,'N')";
+        db.execSQL(insert4);
+        insert4 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Programação Orientada a Objetos',4,'N')";
+        db.execSQL(insert4);
+        insert4 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Projeto Integrador III',4,'S')";
         db.execSQL(insert4);
 
-        String insert5 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
-                "VALUES ('Modelagem de Dados',3,'N')";
+        String insert5;
+        insert5 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Ética e Legislação Profissional',5,'N')";
+        db.execSQL(insert5);
+        insert5 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Fundamentos de Sistemas Operacionais',5,'N')";
+        db.execSQL(insert5);
+        insert5 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Modelagem de Processo de Negócio',5,'N')";
+        db.execSQL(insert5);
+        insert5 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Programação Web',5,'N')";
+        db.execSQL(insert5);
+        insert5 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Projeto Integrador IV',5,'S')";
         db.execSQL(insert5);
 
-        String insert6 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
-                "VALUES ('Programação Estruturada',3,'N')";
+        String insert6;
+        insert6 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Gerência de Projetos de Sistemas',6,'N')";
+        db.execSQL(insert6);
+        insert6 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Programação para Dispositivos Móveis',6,'N')";
+        db.execSQL(insert6);
+        insert6 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Programação Visual',6,'N')";
+        db.execSQL(insert6);
+        insert6 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Projeto Integrador V',6,'S')";
+        db.execSQL(insert6);
+        insert6 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Tópico em Banco de Dados',6,'N')";
         db.execSQL(insert6);
 
-        String insert7 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
-                "VALUES ('Projeto Integrador II',3,'S')";
+        String insert7;
+        insert7 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Empreendedorismo',7,'N')";
         db.execSQL(insert7);
+        insert7 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Metodologias de Desenvolvimento Agil',7,'N')";
+        db.execSQL(insert7);
+        insert7 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Qualidade de Software',7,'N')";
+        db.execSQL(insert7);
+        insert7 = "INSERT INTO DISCIPLINAS (DS_DISCIPLINA,ID_PERIODO,IN_TIPO) " +
+                "VALUES ('Tópicos Especiais em Análise e Desenvolvimento de Sistemas',7,'N')";
+        db.execSQL(insert7);
+
     }
 
     @Override

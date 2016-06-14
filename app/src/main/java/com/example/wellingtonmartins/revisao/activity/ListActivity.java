@@ -62,6 +62,8 @@ public class ListActivity extends AppCompatActivity {
                 if (position != 0) {
                     posicao = position + 1;
                     listarNotas(posicao);
+                } else {
+                    lvNotas.setAdapter(null);
                 }
 
             }

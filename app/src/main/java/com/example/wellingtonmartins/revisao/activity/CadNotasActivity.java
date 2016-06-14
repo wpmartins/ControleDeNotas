@@ -207,19 +207,24 @@ public class CadNotasActivity extends AppCompatActivity {
 
     @Click(R.id.btnGravar)
     public void btnGravar(){
-        Notas obj = new Notas();
-        String retorno = notasDao.inserir(getCampos(obj));
-        Toast.makeText(this, retorno, Toast.LENGTH_LONG).show();
-        limparCampos();
-        limparSpinner();
+        if (posicao !=0){
+            Notas obj = new Notas();
+            String retorno = notasDao.inserir(getCampos(obj));
+            Toast.makeText(this, retorno, Toast.LENGTH_LONG).show();
+            limparCampos();
+            limparSpinner();
+        }
+
 
     }
 
     @Click(R.id.btnCalcular)
     public void btnCalcular(){
-        double media;
-        Notas obj = new Notas();
-        setCampos(calcular(getCampos(obj)));
+        if (posicao != 0){
+            double media;
+            Notas obj = new Notas();
+            setCampos(calcular(getCampos(obj)));
+        }
 
     }
     @Click(R.id.btnLimpar)
